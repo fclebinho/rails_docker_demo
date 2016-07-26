@@ -1,9 +1,16 @@
 db:
-  image: postgres:9.3
+  image: "mysql:5.6"
   volumes:
-    - ~/.docker-volumes/blog/db/:/var/lib/postgresql/data/
+    - ~/.docker-volumes/anotae/db/:/var/lib/mysql/data/
+  ports: 
+    - 3306
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: anotae_production
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
   expose:
-    - '5432'
+    - '3306'
 
 app:
   build: .
